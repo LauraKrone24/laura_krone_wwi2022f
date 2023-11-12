@@ -19,5 +19,5 @@ setup(name='Big Data Abgabe On-Premise Laura Krone',
       package_dir={'':'src'},
       test_suite="tests",
       #include here all binary variables
-      install_requires = ['pyspark >= 2.4.8', 'pandas >= 1.0.1', 'xlrd >= 1.0.0'],
+      install_requires = ['pyspark >= 2.4.8', 'pandas >= 1.0.1', 'xlrd >= 1.0.0', 'psutil >=5.9'],
       zip_safe=False)
