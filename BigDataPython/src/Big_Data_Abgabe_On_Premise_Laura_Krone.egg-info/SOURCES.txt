@@ -1,0 +1,9 @@
+README.md
+setup.cfg
+setup.py
+src/Big_Data_Abgabe_On_Premise_Laura_Krone.egg-info/PKG-INFO
+src/Big_Data_Abgabe_On_Premise_Laura_Krone.egg-info/SOURCES.txt
+src/Big_Data_Abgabe_On_Premise_Laura_Krone.egg-info/dependency_links.txt
+src/Big_Data_Abgabe_On_Premise_Laura_Krone.egg-info/not-zip-safe
+src/Big_Data_Abgabe_On_Premise_Laura_Krone.egg-info/requires.txt
+src/Big_Data_Abgabe_On_Premise_Laura_Krone.egg-info/top_level.txt

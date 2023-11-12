@@ -29,7 +29,7 @@ def fifa_spark_analysis():
         
 
   
-    mapping =spark.sparkContext.textFile("./data/clean_fifa_worldcup_matches.csv")\
+    mapping =spark.sparkContext.textFile("./BigDataPython/data/clean_fifa_worldcup_matches.csv")\
         .map(process_line)\
         .reduceByKey(lambda x,y : x + y)\
         .sortBy(lambda x: x[1], False)\
@@ -38,11 +38,12 @@ def fifa_spark_analysis():
 
     results = spark.createDataFrame(mapping,schema=["Team", "Anzahl Win"])
 
-    #results.coalesce(1)\
-    #   .write\
-    #   .format("com.databricks.spark.csv")\
-    #   .option("header", "true")\
-    #   .save("example")
+    results.coalesce(1)\
+       .write\
+       .mode("overwrite")\
+       .format("com.databricks.spark.csv")\
+       .option("header", "true")\
+       .save("results")
 
     results.show()  
     
