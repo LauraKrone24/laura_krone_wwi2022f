@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  mysql-db:
+    build: ./my_sql_db
+    container_name: my_sql_database
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: my_database
+    volumes:
+      - /Users/laura/wi22001/:/var/lib/mysql  #für Abgabe durch /var/lib/wi22001 ersetzen (Zugriffsrechte auf UNI Laptop eingeschränkt)
+    ports:
+      - "3306:3306"
+    networks: 
+      - big_data_abgabe_wi22001
+    
+
+  my_micro_service:
+    build: ./my_micro_service
+    container_name: my_service
+    ports:
+      - "3000:3000"
+    networks: 
+      - big_data_abgabe_wi22001
+    depends_on:
+      - mysql-db
+
+networks:
+    big_data_abgabe_wi22001:
+         name: big_data_abgabe_wi22001
