@@ -3,13 +3,18 @@ import mysql.connector
 from mysql.connector import errorcode
   
 app = Flask(__name__) 
-  
-@app.route('/') 
-def helloworld(): 
 
 
-    print("Es beginnt")
-    
+'''
+     Diese unter /artists bereitgestellte Microservice - Methode
+     stellt eine Verbindung zu Datenbank her und gibt ihren Inhalt
+     im JSON Format aus
+'''
+@app.route('/artists') 
+def show_artists(): 
+
+
+    #Verbindung wird erstellt 
     my_sql_db_connection = mysql.connector.connect(
         user="root",
         password="root_password",
@@ -18,19 +23,28 @@ def helloworld():
         database="my_database",
         auth_plugin='mysql_native_password'
     )
-    print(my_sql_db_connection)
+
+    # Daten werden abgefragt
     curser=my_sql_db_connection.cursor()
-    print(curser)
-    curser.execute("SELECT * FROM artists")
-    artists = curser.fetchall()
-    print(artists)
+    curser.execute("SELECT * FROM artists ORDER BY times_played DESC;")
+    list_of_artist_tupel = curser.fetchall()
+
+    # Umformatieren für besseres JSON Format
+    keys = ("Artist_ID","Artist_Name", "Times_Played")
+    list_of_artist_dict = [dict(zip(keys, values)) for values in list_of_artist_tupel]
+
+
+    # Verbindung wird geschlossen 
     my_sql_db_connection.close()
-    print(artists)
-    return jsonify(artists) 
+
+    # Ergebniss wird zurückgegeben
+    return jsonify(list_of_artist_dict) 
     
     
   
-  
+'''
+    Dies ist der Einstiegspunkt des Programms
+    Der Micorservice läuft auf Localhost Port 3000
+'''  
 if __name__ == '__main__': 
-    print("Container up")
     app.run(host='0.0.0.0',port=3000) 
