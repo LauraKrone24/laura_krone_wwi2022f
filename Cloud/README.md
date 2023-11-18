@@ -9,19 +9,19 @@ Dozent: Bernhard Ortner
 Kurs: WWI2022F
 Name: Laura Krone
 Email: wi22001@lehre.dhbw-stuttgart.de
-Matrikelnr.:
+Matrikelnr.: 1130769
 
 ## Dokumentation
 - Dokumentation zu den in diesem Projekt verwendeten Methoden und Files befindet sich in /doc/README.md
 
 ## Starten der Container 
-0. Falls noch nicht vorhanden Docker und Docker compose installieren
+0. Falls noch nicht vorhanden Docker und docker-compose installieren
 1. Im Terminal in den Ornder /Cloud navigieren
-2. Eingabe des Befehls "docker-compose up -d"
+2. Eingabe des Befehls "docker-compose up"
 
 ## Zugriff auf die Datenbank
 - Eine Bearbeitung der Datenbank ist im Container selbst möglich. Dazu müssen folgende Schritte ausgeführt werden: 
-1. Starten der Container durch "docker-compose up -d"
+1. Starten der Container durch "docker-compose up"
 2. Anzeigen der laufenden Container durch "docker container ls"
 3. Kopieren der Container ID des Containers mit dem Namen my_sql_database
 4. Aufschalten auf den Container mit "docker exec -it ContainerID /bin/bash"
