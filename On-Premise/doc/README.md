@@ -1,38 +1,45 @@
-# Lecture Test
+## data
+- Die hier zu findene Datei enthält Daten zu den Ergebnissen von Fifa Word Cup Spielen seit 1930. 
+- Die Datei hat folgende Spalten 
+   - HomeTeam: Land bzw. Manschaft, die das Spiel ausgerichtet hat
+   - AwayTeam: Land bzw. Manschaft, die als Gast angereist ist
+   - Year: Jahr in dem das Spiel stattgefunden hat
+   - HomeGoals: Anzahl an Toren, die das HomeTeam geschossen hat
+   - AwayGoals: Anzahl an Toren, die das AwayTeam geschossen hat
+   - TotalGoals: Anzahl an Toren, die insgesamt in einem Spiel gefallen sind 
 
-Here you can write some documentation as markdown file (md5). It will be added to the python package
+## src
+- Dieser Ordner enthält den Python Code, mit welchem die Analyse durchgeführt werden kann
+   ## main.py
+   - Dieses File stellt den Einstiegspunkt für das Programm dar, da es die Methode main() enthält. 
+   - Die Main Methode lädt die Analysefunktion aus dem Submodul analysis.fifa_analysis und startet diese. 
 
-## Getting Started
-When you face ModuleNotFoundError: No module named 'pyspark' then you most like miss an enviornment.
+   ## analysis.fifa_analysis
+   - Dies ist ein Submodul, in welchem die Auswertung der Fifaworldcup Daten mit Hilfe von Pyspark durchgeführt werden. 
+   - Das File fifa_analysis.py enthält eine Methode fifa_spark_analysis,. welche wiederrum eine Submethode process_line verwendet
 
-![Settings](No_Module_Found_Error.png)
+      ## fifa_spark_analysis
+      1. Initialisierung einer Spark Session
+      2. Laden der Daten aus dem clean_fifa_worldcup_matches File und mappen der Daten mit Hilfe der process_line Submethode
+      3. Reduzieruzng der Daten durch eine Aggregartion / Gruppierung nach zurückgegebenen Team
+      4. Filtern der Daten, um alle Unentschieden zu entfernen
+      5. Sortieren der Daten 
+      6. Konvertierung in eine Liste
+      7. Liste in Dataframe umwandeln 
+      8. Schreiben der Ergebnisse in die Datei part-00000-....csv im Ordner results
+      9. Zusätzliche Ausgabe der Ergebnisse in der Konsole
+      10. Beenden der Spark Session
 
-### Resolution
-Your python distribution cannot find pyspark. You have to run pip (the packaging manager of python) before.
-1. Create a virtual environment, see https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html#python_create_virtual_env
-2. Do not create them in the same project directory, e.g. create a separate Folder for the virtual environment (venv). 
-For Example: ![folder](folder_venv.png)
+      ## process_line
+      - Diese Submethode verarbeitet jeweils eine Zeile der CSV Datei
+      1. Aufspalten der Zeile in die einzelnen Felder
+      2. Abfrage, welches Team gewonnen hat (bzw. ob es ein unentschieden gab), indem Toranzahl verglichen wird
+      3. Zurückgabe des Ergebnisses als Tupel
 
-Example is the extracted code from this repository, whereas venv is the folder where you create an environment
-3. Open the extracted (unzipped) Project or create a new one
-4. Head to IDE and Project Settings in the right above corner
-   ![Settings](IDE_and_Project_Settings.png)
-5. Go to Preferences and following window will pop up
-   ![Python Interpreter](Python_Interpreter.png)
+## results
+- Die hier zufindene CSV Datei (part-0000....csv) enthält die Ergebnisse der Analyse. 
+- Die Datei besteht aus 2 Spalten: 
+   - Team: Namen des Teams
+   - Anzahl Win: Anzahl an Spielen, die das Team gewonnen hat
+- Die Einträge sind absteigend nach Anzahl der Siege sortiert
 
-If you have never set anything up, it will be looking like that. Python Interpreter <No Interpreter> 
-
-6. Click on the small error and open all available interpreters by selection "Show All", a list similar to the list below
-appears
-   ![Available_Interpreter](Selected_VEnv.png)
-7. Click on "+" to add your interpeter. Fit the interpreter to your environment, for example:
-   ![Create Interpreter](create_python_interpreter.png)
-8. Your created environment appears on the list. By default following packages are installed:
-   ![Installed Packages](Installed_Packages.png)
-9. Select it and close the wizard. Your IDE should now recognize the missing packages
-   ![Install_requirements](Install_Requirements.png)
-
-Click on install requirements, then restart your IDE. 
-
-10. You're ready to go, if everything looks like
-    ![Ready2Go](final_State.png)

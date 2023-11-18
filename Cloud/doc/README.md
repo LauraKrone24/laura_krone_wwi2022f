@@ -1,8 +1,11 @@
 ## DOCKER-COMPOSE.YML
 - Dieses File dient dazu beide Container hochzufahren. Es enthält: 
     - Die Konfigurationen für die Container, für die Datenbank und den Mikroservice
-        - Hier werden u.a. die Kontainernamen, Enviromentvariablen und Netzwerkzugehörigkeit vergeben 
+        - Hier werden u.a. die Kontainernamen, Ports und Netzwerkzugehörigkeit vergeben 
     - Es wird zudem auch ein Netzwerk angelegt, dem beiden Conatiner angehören, welches den Namen "big_data_abgabe_wi22001" hat
+
+## .env
+- Dieses File enthält alle für die verschiedenen Services benötigten Variablen wie u.a. Datenbankname und Passwort
 
 ## MY SQL DB 
 - In diesen Ordner befinden sich alles Nötwendige zum dockerisieren der Datenbank

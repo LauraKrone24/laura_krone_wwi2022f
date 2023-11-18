@@ -1,12 +1,11 @@
-version: '3'
+version: '3.4'
 
 services:
   mysql_db:
     build: ./my_sql_db
     container_name: my_sql_database
-    environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: my_database
+    env_file:
+      - .env
     volumes:
       - /Users/laura/wi22001/mysql_db/mysql:/var/lib/mysql  #für Abgabe durch /var/lib/wi22001 ersetzen (Zugriffsrechte auf UNI Laptop eingeschränkt)
       - /Users/laura/wi22001/mysql_db/logs:/var/log 
@@ -19,6 +18,8 @@ services:
   my_micro_service:
     build: ./my_micro_service
     container_name: my_service
+    env_file:
+      - .env
     ports:
       - "3000:3000"
     networks: 

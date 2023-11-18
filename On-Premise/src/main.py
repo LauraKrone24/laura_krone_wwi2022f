@@ -1,10 +1,10 @@
 '''
-Author: Laura Krone
-Version: 1
-Description: Startpunkt für ein Programm,
-welches mit Spark die Anzahl an Siegen von Ländern in Fifa World Cup Spielen berechnet,
-die Manschaften nach ihrer Sieganzahl soritiert und 
-die Ergebnisse abspeichert
+    Autor: Laura Krone
+    Version: 1
+    Beschreibung:   Startpunkt für ein Programm,
+                    welches mit Spark die Anzahl an Siegen von Ländern in Fifa World Cup Spielen berechnet,
+                    die Manschaften nach ihrer Sieganzahl soritiert und 
+                    die Ergebnisse abspeichert
 '''
 
 

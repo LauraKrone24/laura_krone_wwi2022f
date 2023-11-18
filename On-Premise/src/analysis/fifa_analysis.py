@@ -1,12 +1,13 @@
-
+'''
+    Autor: Laura Krone
+    Version: 1
+    Beschreibung:   In dieser Methode wird die Analyse der Fifa Daten durchgeführt und abgespeichert.
+                    Fragestellung der Analse lautet: 
+                    Welche Ländern haben am häufigsten gewonnen?
+'''
 from pyspark.sql import SparkSession 
 
-'''
-    In dieser Methode wird die Analyse der Fifa Daten durchgeführt und abgespeichert.
-    Fragestellung der Analse lautet: 
-         Welche Ländern haben am häufigsten gewonnen?
 
-'''
 
 def fifa_spark_analysis(): 
 

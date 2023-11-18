@@ -1,12 +1,14 @@
 from setuptools import setup, find_packages
 from os import path
 this_directory = path.abspath(path.dirname(__file__))
-with open(path.join(this_directory+"/doc", 'ReadMe.md'), encoding='utf-8') as f:
+with open(path.join(this_directory+"/doc", 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='Big Data Abgabe On-Premise Laura Krone',
       version='1.0',
-      description='Dies ist eine Abgabe für das Modul Big Data ',
+      description='''Dies ist eine Abgabe für das Modul Big Data. Dieser Teil befasst sich mit der On Premise Aufgabe. 
+                    Das Projekt beinhaltet ein Programm,welches mit Spark die Anzahl an Siegen von Ländern in Fifa World Cup Spielen berechnet,
+                    die Manschaften nach ihrer Sieganzahl soritiert und die Ergebnisse abspeichert''',
       url='https://git.dhbw-stuttgart.de/laurakrone/wwi2022f_laurakrone.git',
       python_requires='==3.12.0',
       setup_requires=['setuptools-pep8'],
