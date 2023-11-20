@@ -33,3 +33,19 @@ Matrikelnr.: 1130769
 - Wenn beide Container gestartet sind, muss der Befehl "curl localhost:3000/artists" ausgeführt werden, um auf den Microservice zuzugreifen 
 - Alternativ kann man die Rückmeldungen des Microservice auch unter http://localhost:3000/artists ansehen
 
+
+## Alternatives Startes durch docker build und docker run
+- Falls im Rahmen der Aufgabenüberprüfung beide Conatiner einzeln über den docker run Befehl ausgeführt werden sollen, können folgende Befehle verwendet werden, um alle notwendig Parameter zu setzen: 
+
+    ## Netzwerk 
+    1. Führe den Befehl "docker network create big_data_abgabe_wi22001"
+
+    ## my_sql_db
+    1. Navigiere in den Ordner my_sql_db
+    2. Führe den Befehl "docker build -t my_sql_image ." aus, um das Image zu bauen
+    3. Führe den Befehl "docker run --name my_sql_database -v /Users/laura/wi22001/mysql_db/mysql:/var/lib/mysql -v /Users/laura/wi22001/mysql_db/logs:/var/log -p 3306:3306 --env-file ../.env --network big_data_abgabe_wi22001 my_sql_image"
+
+    ## my_sql_db
+    1. Navigiere in den Ordner my_micro_service
+    2. Führe den Befehl "docker build -t my_service_image ." aus, um das Image zu bauen
+    3. Führe den Befehl "docker run -v /Users/laura/wi22001/my_micro_service/logs:/var/log -p 3000:3000 --env-file ../.env --network big_data_abgabe_wi22001 my_service_image"
