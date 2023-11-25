@@ -6,6 +6,7 @@
                     Welche Ländern haben am häufigsten gewonnen?
 '''
 from pyspark.sql import SparkSession 
+import os
 
 
 
@@ -28,9 +29,13 @@ def fifa_spark_analysis():
         else: 
            return "Unentschieden", 1
 
+    # Definieren des richtigen Datenpfades 
+    cwd = os.getcwd()
+    data_path = cwd.split("laura_krone_wwi2022f")[0] + "laura_krone_wwi2022f/On-Premise/data/clean_fifa_worldcup_matches.csv"
+
         
     # Laden, Mappen, Reducen, Filtern und Soritieren der Daten
-    result_list =spark.sparkContext.textFile("./On-Premise/data/clean_fifa_worldcup_matches.csv")\
+    result_list =spark.sparkContext.textFile(data_path)\
         .map(process_line)\
         .reduceByKey(lambda x,y : x + y)\
         .filter(lambda x: x[0]!="Unentschieden")\
@@ -52,7 +57,7 @@ def fifa_spark_analysis():
     #Ausgabe der Ergebnisse in der Konsole 
     results.show()  
     top_team =results.collect()[0]
-    print("Mit ",top_team[1]," Siegen ist ",top_team[0]," das erfolgreichste Team!!")
+    print("Mit ",top_team[1]," Siegen ist ",top_team[0]," das erfolgreichste Team!")
     
     # Stoppen der Spark Session
     spark.stop()

@@ -15,7 +15,7 @@ Matrikelnr.: 1130769
 - Dokumentation zu den in diesem Projekt verwendeten Methoden und Files befindet sich in /doc/README.md
 
 ## Starten der Container 
-0. Falls noch nicht vorhanden Docker und docker-compose installieren
+0. Falls noch nicht vorhanden Docker und docker-compose installieren und verfügbar machen
 1. Im Terminal in den Ornder /Cloud navigieren
 2. Eingabe des Befehls "docker-compose up"
 

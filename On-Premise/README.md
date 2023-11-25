@@ -14,12 +14,18 @@ Matrikelnr.: 1130769
 ## Dokumentation
 - Dokumentation zu den in diesem Projekt verwendeten Methoden befindet sich in /doc/README.md
 
+## Ausführung
+- Entpacke die Zip-Datei in einen Ordner einen gleichnamigen Ordner 
+- Die Analyse kann in VSCode in dem durch die Datei main.py, welche sich in dem Ordner /src befindet gestartet werden 
+- Ausführen im Terminal
+    - Navigation in den Ordner /src
+    - Ausführen des Befehls "python main.py" bzw "python3 main.py"
+
 ## Datengrundlage
 - Es werden die in der Aufgabenstellung vorgeschlagenen Fifadaten verwendet
 - Die Daten enthalten die Spielergebnisse aller Fifa Worldcup Matches seit 1930
 - Online zu finden sind die Daten unter: https://raw.githubusercontent.com/ifrankandrade/fifa-world-cup-2022-prediction/main/data/clean_fifa_worldcup_matches.csv
 - Innerhalb dieses Projektes befinden sich die Daten unter data/clean_fifa_worldcup_matches.csv
-
 
 ## Umsetzung
 - In "setup.py" und "setup.cfg" sind alle technische Voraussetzungen und Dependencies definiert
